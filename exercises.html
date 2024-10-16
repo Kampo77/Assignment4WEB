@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Exercises </title>
+    <style>
+        #myImage {
+            width: 250px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h2> What can JavaScript do?</h2>
+    <p id='demo'> JavaScript can change HTML content</p>
+    <button type="button" onclick='document.getElementById("demo")' .innerHTML="Hello JavaScript!"> Click me! </button>
+    <h2> Second Task!</h2>
+    <button onclick="changeImage()">Change Image</button>
+    <img id="myImage" src="qwe.jpg" alt="Sample Image">
+    <h2> Third Task! </h2>
+    <button type="button" onclick='document.getElementById("demo").style.fontWeight = "bold"'> Change to bold </button>
+    <h2> Fourth Task! </h2>
+
+
+    <h2> Fifth Task!</h2>
+    <h2> Sixth Task! <br> Check in the console log!</h2>
+    <h2> Seventh Task! </h2>
+    <p id="result"></p>
+    <h2> Eighth Task!</h2>
+    <p id="currentDate"></p>
+    <h2> Ninth Task!</h2>
+    <label for="yearInput">Enter a year:</label>
+    <input type="number" id="yearInput" placeholder="e.g. 2024">
+    <button onclick="checkLeapYear()">Check Leap Year</button>
+    <p id="result_leap"></p>
+    <h2> Tenth Task!</h2>
+    <h4>Simple Calculator</h4>
+    <input id="num_1" type="number" placeholder="First number">
+    <input id="num_2" type="number" placeholder="Second number">
+    <select id="operator">
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <button onclick="calculate()">Calculate</button>
+    <p>Result: <span id="calcResult"></span></p>
+    <h2> 11 Task! </h2>
+
+    <div>
+        <label for="celsius">Celsius:</label>
+        <input type="number" id="celsius" placeholder="Enter Celsius">
+        <button onclick="celsiusToFahrenheit()">Convert to Fahrenheit</button>
+    </div>
+
+    <div>
+        <label for="fahrenheit">Fahrenheit:</label>
+        <input type="number" id="fahrenheit" placeholder="Enter Fahrenheit">
+        <button onclick="fahrenheitToCelsius()">Convert to Celsius</button>
+    </div>
+
+    <p id="resultC"></p>
+    <h2> 12 Task! </h2>
+    <label for="number">Enter a number:</label>
+    <input type="number" id="number" placeholder="Enter number">
+    <button onclick="checkEvenOrOdd()">Check</button>
+
+    <p id="result12"></p>
+    <h2> 13 Task! </h2>
+    <label for="san1">Enter first number:</label>
+    <input type="number" id="san1" placeholder="First number">
+    <br>
+    <label for="san2">Enter second number:</label>
+    <input type="number" id="san2" placeholder="Second number">
+    <br>
+    <label for="san3">Enter third number:</label>
+    <input type="number" id="san3" placeholder="Third number">
+    <br>
+    <button onclick="findLargestAndSmallest()">Find</button>
+    <h2> 14 Task! </h2>
+    <label for="side1">Enter side 1:</label>
+    <input type="number" id="side1" placeholder="Length of side 1">
+    <br>
+    <label for="side2">Enter side 2:</label>
+    <input type="number" id="side2" placeholder="Length of side 2">
+    <br>
+    <label for="side3">Enter side 3:</label>
+    <input type="number" id="side3" placeholder="Length of side 3">
+    <br>
+    <button onclick="calculateArea()">Calculate Area</button>
+
+    <p id="result14"></p>
+    <h2> 15 Task! </h2>
+    <label for="number">Enter a number:</label>
+    <input type="number" id="number" placeholder="Enter a number">
+    <br>
+    <button onclick="calculateFactorial()">Calculate Factorial</button>
+    <p id="result15"></p>
+    <h2> 16 Task!</h2>
+    <label for="inputString">Enter a string:</label>
+    <input type="text" id="inputString" placeholder="Enter your string">
+    <br>
+    <button onclick="countVowelsAndConsonants()">Count</button>
+
+    <p id="result16"></p>
+    <h2> 17 Task! </h2>
+    <label for="secondsInput">Enter seconds:</label>
+    <input type="number" id="secondsInput" placeholder="Enter seconds">
+    <br>
+    <button onclick="convertSeconds()">Convert</button>
+
+    <p id="result17"></p>
+    <h2> 18 Task! </h2>
+    <label for="arrayInput">Enter an array of integers (comma-separated):</label>
+    <input type="text" id="arrayInput" placeholder="e.g., 1,2,3,2,1,1">
+    <br>
+    <button onclick="findMostFrequent()">Find</button>
+
+    <p id="result18"></p>
+    <h2> 19 Task! </h2>
+    <label for="termInput">Enter number of terms:</label>
+    <input type="number" id="termInput" placeholder="e.g., 10">
+    <br>
+    <button onclick="calculateFibonacci()">Calculate</button>
+
+    <p id="result19"></p>
+    <h2> 20 Task! </h2>
+    <button onclick="calculateDaysUntilNewYear()">Calculate</button>
+    <p id="result20"></p>
+    <script>
+        let isOriginalImage = true;
+        function changeImage() {
+            if (isOriginalImage) {
+                document.getElementById("myImage").src = "asd.jpg";
+            } else {
+                document.getElementById("myImage").src = "qwe.jpg";
+            }
+            isOriginalImage = !isOriginalImage;
+        }
+        function showDate() {
+            var today = new Date().toDateString();
+            document.getElementById("date").innerHTML = today;
+            document.getElementById("date").style.display = "block";
+        }
+
+        function hideDate() {
+            document.getElementById("date").style.display = "none";
+        }
+        let age = 18;
+        let fullName = "Yerassyl Salimgerey";
+        let isStudent = true;
+
+        console.log(`My name is ${fullName}.`);
+        console.log(`I am ${age} years old.`);
+        console.log(`Am I a student? ${isStudent}`);
+
+        let num1 = parseFloat(prompt("Enter the first number:"));
+        let num2 = parseFloat(prompt("Enter the second number:"));
+
+        let sum = num1 + num2;
+        let difference = num1 - num2;
+        let product = num1 * num2;
+        let quotient = num1 / num2;
+
+        document.getElementById('result').innerHTML = `
+            The sum of ${num1} and ${num2} is: ${sum} <br>
+            The difference between ${num1} and ${num2} is: ${difference} <br>
+            The product of ${num1} and ${num2} is: ${product} <br>
+            The quotient of ${num1} divided by ${num2} is: ${quotient.toFixed(2)}
+        `;
+
+        let today = new Date();
+        let date = today.toDateString();
+        document.getElementById("currentDate").innerHTML = `Today is: ${date}`;
+        function checkLeapYear() {
+            let year = document.getElementById("yearInput").value;
+
+            if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+                document.getElementById("result_leap").innerHTML = `${year} is a leap year.`;
+            } else {
+                document.getElementById("result_leap").innerHTML = `${year} is not a leap year.`;
+            }
+        }
+        function calculate() {
+            let num_1 = parseFloat(document.getElementById("num_1").value);
+            let num_2 = parseFloat(document.getElementById("num_2").value);
+            let operator = document.getElementById("operator").value;
+            let result;
+
+            switch (operator) {
+                case "*":
+                    result = num_1 * num_2;
+                    break;
+                case "/":
+                    result = num_1 / num_2;
+                    break;
+            }
+            document.getElementById("calcResult").innerHTML=result;
+        }
+        function celsiusToFahrenheit() {
+            let celsius = document.getElementById("celsius").value;
+            let fahrenheit = (celsius * 9) / 5 + 32;
+            document.getElementById("resultC").innerHTML = `${celsius}°C is ${fahrenheit.toFixed(2)}°F`;
+        }
+
+        function fahrenheitToCelsius() {
+            let fahrenheit = document.getElementById("fahrenheit").value;
+            let celsius = ((fahrenheit - 32) * 5) / 9;
+            document.getElementById("resultC").innerHTML = `${fahrenheit}°F is ${celsius.toFixed(2)}°C`;
+        }
+        function checkEvenOrOdd() {
+            let number = document.getElementById("number").value;
+            if (number % 2 === 0) {
+                document.getElementById("result12").innerHTML = `${number} is Even`;
+            } else {
+                document.getElementById("result12").innerHTML = `${number} is Odd`;
+            }
+        }
+        function findLargestAndSmallest() {
+            let san1 = parseFloat(document.getElementById("san1").value);
+            let san2 = parseFloat(document.getElementById("san2").value);
+            let san3 = parseFloat(document.getElementById("san3").value);
+            let largest = Math.max(san1, san2, san3);
+            let smallest = Math.min(san1, san2, san3);
+            document.getElementById("result13").innerHTML = `Largest: ${largest}, Smallest: ${smallest}`;
+        }
+        function calculateArea() {
+            let a = parseFloat(document.getElementById("side1").value);
+            let b = parseFloat(document.getElementById("side2").value);
+            let c = parseFloat(document.getElementById("side3").value);
+            
+            let s = (a + b + c) / 2;
+            let area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+            
+            document.getElementById("result14").innerHTML = `Area of the triangle: ${area.toFixed(2)}`;
+        }
+        function calculateFactorial() {
+            let number = parseInt(document.getElementById("number").value);
+            let factorial = 1;
+
+            if (number < 0) {
+                document.getElementById("result15").innerHTML = "Factorial is not defined for negative numbers.";
+                return;
+            }
+
+            for (let i = 1; i <= number; i++) {
+                factorial *= i;
+            }
+
+            document.getElementById("result15").innerHTML = `Factorial of ${number} is ${factorial}`;
+        }
+        function countVowelsAndConsonants() {
+            let str = document.getElementById("inputString").value;
+            let vowelsCount = 0;
+            let consonantsCount = 0;
+            const vowels = 'aeiouAEIOU';
+
+            for (let char of str) {
+                if (char.match(/[a-zA-Z]/)) {
+                    if (vowels.includes(char)) {
+                        vowelsCount++;
+                    } else {
+                        consonantsCount++;
+                    }
+                }
+            }
+
+            document.getElementById("result16").innerHTML = 
+                `Vowels: ${vowelsCount}, Consonants: ${consonantsCount}`;
+        }
+        function convertSeconds() {
+            let seconds = parseInt(document.getElementById("secondsInput").value);
+            let hours = Math.floor(seconds / 3600);
+            let minutes = (seconds % 3600) / 60;
+            document.getElementById("result17").innerHTML = `${hours} hours and ${minutes.toFixed(4)} minutes`;
+        }
+        function findMostFrequent() {
+            let inputArray = document.getElementById("arrayInput").value.split(',').map(Number);
+            let frequency = {};
+            let mostFrequentNum = null;
+            let maxCount = 0;
+
+            for (let num of inputArray) {
+                frequency[num] = (frequency[num] || 0) + 1;
+
+                if (frequency[num] > maxCount) {
+                    maxCount = frequency[num];
+                    mostFrequentNum = num;
+                }
+            }
+
+            document.getElementById("result18").innerHTML = `Most Frequent Number: ${mostFrequentNum} (appears ${maxCount} times)`;
+        }
+        function findMostFrequent() {
+            let inputArray = document.getElementById("arrayInput").value.split(',').map(Number);
+            let frequency = {};
+            let mostFrequentNum = null;
+            let maxCount = 0;
+
+            for (let num of inputArray) {
+                frequency[num] = (frequency[num] || 0) + 1;
+
+                if (frequency[num] > maxCount) {
+                    maxCount = frequency[num];
+                    mostFrequentNum = num;
+                }
+            }
+
+            document.getElementById("result18").innerHTML = `Most Frequent Number: ${mostFrequentNum} (appears ${maxCount} times)`;
+        }
+        function calculateFibonacci() {
+            let n = parseInt(document.getElementById("termInput").value);
+            let fibonacciSequence = [];
+
+            for (let i = 0; i < n; i++) {
+                if (i === 0) {
+                    fibonacciSequence[i] = 0;
+                } else if (i === 1) {
+                    fibonacciSequence[i] = 1;
+                } else {
+                    fibonacciSequence[i] = fibonacciSequence[i - 1] + fibonacciSequence[i - 2];
+                }
+            }
+
+            document.getElementById("result19").innerHTML = `Fibonacci Sequence (first ${n} terms): ${fibonacciSequence.join(", ")}`;
+        }
+        function calculateDaysUntilNewYear() {
+            const today = new Date();
+            const currentYear = today.getFullYear();
+            const newYear = new Date(currentYear + 1, 0, 1);
+            const timeDifference = newYear - today;
+            const daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+            document.getElementById("result20").innerHTML = `Days left until New Year: ${daysLeft}`;
+        }
+    </script>
+</body>
+
+</html>

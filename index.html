@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Assignment 4</title>
+  <style>
+    #myImage { width: 150px; }
+    #todoList ul { list-style-type: none; padding: 0; }
+    #todoList li { margin: 5px 0; }
+    input[type="number"], input[type="text"], select { margin: 5px 0; padding: 5px; }
+  </style>
+  <script>
+    // Переключатель для фона
+    let isOriginalBackground = true;
+    function changeBackgroundColor() {
+      if (isOriginalBackground) {
+        document.body.style.backgroundColor = "lightgreen";
+      } else {
+        document.body.style.backgroundColor = "white"; 
+      }
+      isOriginalBackground = !isOriginalBackground; 
+    }
+
+    // Переключатель для изображения
+    let isOriginalImage = true;
+    function changeImage() {
+      if (isOriginalImage) {
+        document.getElementById("myImage").src = "asd.jpg"; // Новое изображение
+      } else {
+        document.getElementById("myImage").src = "qwe.jpg"; // Исходное изображение
+      }
+      isOriginalImage = !isOriginalImage;
+    }
+
+    // Переключатель для текста
+    let isOriginalText = true;
+    function changeText() {
+      if (isOriginalText) {
+        document.getElementById("text").innerHTML = "New text content!"; // Новый текст
+      } else {
+        document.getElementById("text").innerHTML = "This is the original text."; // Исходный текст
+      }
+      isOriginalText = !isOriginalText;
+    }
+
+    // To-Do List
+    function addTask() {
+      let taskInput = document.getElementById("taskInput").value;
+      if (taskInput === "") {
+        alert("You must type something");
+        return;
+      }
+
+      let li = document.createElement("li");
+      li.textContent = taskInput;
+      document.getElementById("taskList").appendChild(li);
+
+      let deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "Delete";
+      deleteBtn.onclick = function() {
+        li.remove();
+      };
+      li.appendChild(deleteBtn);
+
+      document.getElementById("taskInput").value = "";
+    }
+
+    // Number sorting function
+    function sortNumbers(order) {
+      let numInput = document.getElementById("numInput").value;
+      let numbers = numInput.split(",").map(Number);
+
+      if (numbers.some(isNaN)) {
+        alert("Please enter only numbers.");
+        return;
+      }
+
+      numbers.sort((a, b) => order === 'asc' ? a - b : b - a);
+      document.getElementById("sortedOutput").textContent = numbers.join(", ");
+    }
+
+    // Calculator
+    function calculate() {
+      let num1 = parseFloat(document.getElementById("num1").value);
+      let num2 = parseFloat(document.getElementById("num2").value);
+      let operator = document.getElementById("operator").value;
+      let result;
+
+      switch (operator) {
+        case "+":
+          result = num1 + num2;
+          break;
+        case "-":
+          result = num1 - num2;
+          break;
+        case "*":
+          result = num1 * num2;
+          break;
+        case "/":
+          result = num1 / num2;
+          break;
+        case "%":
+          result = num1 % num2;
+          break;
+        case "^":
+          result = Math.pow(num1, num2);
+          break;
+        default:
+          result = "Invalid operation";
+      }
+
+      document.getElementById("calcResult").textContent = result;
+    }
+
+    // Tax Calculator
+    function calculateTax() {
+      let price = parseFloat(document.getElementById("price").value);
+      let tax;
+
+      if (price > 10000) {
+        tax = price * 0.25;
+      } else if (price >= 5000) {
+        tax = price * 0.20;
+      } else {
+        tax = price * 0.15;
+      }
+
+      document.getElementById("taxResult").textContent = "Tax: $" + tax.toFixed(2);
+    }
+  </script>
+</head>
+<body>
+  <h1>Assignment 4</h1>
+
+  <!-- 1 -->
+  <h2>Button Functions</h2>
+  <button onclick="changeBackgroundColor()">Change Background</button>
+  <button onclick="changeImage()">Change Image</button>
+  <button onclick="changeText()">Change Text</button>
+  <img id="myImage" src="qwe.jpg" alt="Sample Image">
+  <p id="text">This is the original text.</p>
+
+  <!-- 2 -->
+  <h2>To-Do List</h2>
+  <div id="todoList">
+    <input id="taskInput" type="text" placeholder="New task...">
+    <button onclick="addTask()">Add Task</button>
+    <ul id="taskList"></ul>
+  </div>
+
+  <!-- 3 -->
+  <h2>Number Sorting Tool</h2>
+  <input id="numInput" type="text" placeholder="Enter numbers separated by commas">
+  <button onclick="sortNumbers('asc')">Sort Ascending</button>
+  <button onclick="sortNumbers('desc')">Sort Descending</button>
+  <p>Sorted Numbers: <span id="sortedOutput"></span></p>
+
+  <!-- 4 -->
+  <h2>Simple Calculator</h2>
+  <input id="num1" type="number" placeholder="First number">
+  <input id="num2" type="number" placeholder="Second number">
+  <select id="operator">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+    <option value="%">%</option>
+    <option value="^">^</option>
+  </select>
+  <button onclick="calculate()">Calculate</button>
+  <p>Result: <span id="calcResult"></span></p>
+
+  <!-- 5 -->
+  <h2>Tax Calculator</h2>
+  <input id="price" type="number" placeholder="Car price">
+  <button onclick="calculateTax()">Calculate Tax</button>
+  <p id="taxResult"></p>
+
+</body>
+</html>
